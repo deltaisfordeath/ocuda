@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,7 @@ using Ocuda.Promenade.Service.Interfaces.Repositories;
 
 namespace Ocuda.Promenade.Data.Promenade
 {
-    public class LocationInteriorImageRepository : GenericRepository<PromenadeContext, LocationInteriorImage>, 
+    public class LocationInteriorImageRepository : GenericRepository<PromenadeContext, LocationInteriorImage>,
         ILocationInteriorImageRepository
     {
         public LocationInteriorImageRepository(Repository<PromenadeContext> repositoryFacade,

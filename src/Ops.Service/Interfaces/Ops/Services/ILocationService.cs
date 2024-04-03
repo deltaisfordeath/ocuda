@@ -8,76 +8,78 @@ using Ocuda.Utility.Models;
 
 namespace Ocuda.Ops.Service.Interfaces.Ops.Services
 {
-    public interface ILocationService
-    {
-        Task AddInteriorImageAsync(LocationInteriorImage locationInteriorImage);
+        public interface ILocationService
+        {
+                Task AddAltTextRangeAsync(List<LocationInteriorImageAltText> imageAltTexts);
 
-        Task AddImageAltTextAsync(ImageAltText imageAltText);
+                Task AddImageAltTextAsync(LocationInteriorImageAltText imageAltText);
 
-        Task AddAltTextRangeAsync(List<ImageAltText> imageAltTexts);
+                Task AddInteriorImageAsync(LocationInteriorImage locationInteriorImage);
 
-        Task<Location> AddLocationAsync(Location location);
+                Task<Location> AddLocationAsync(Location location);
 
-        Task AddLocationMappingAsync(int productId, string importLocation, int locationId);
+                Task AddLocationMappingAsync(int productId, string importLocation, int locationId);
 
-        Task DeleteAsync(int id);
+                Task<string> AssetPathToFullPath(string imagePath);
 
-        Task DeleteMappingAsync(int locationMapId);
+                Task DeleteAsync(int id);
 
-        Task DeleteInteriorImageAsync(int imageId);
+                Task DeleteInteriorImageAsync(int imageId);
 
-        Task<Location> EditAlwaysOpenAsync(Location location);
+                Task DeleteMappingAsync(int locationMapId);
 
-        Task<Location> EditAsync(Location location);
+                Task<Location> EditAlwaysOpenAsync(Location location);
 
-        Task<IEnumerable<LocationProductMap>> GetAllLocationProductMapsAsync(int productId);
+                Task<Location> EditAsync(Location location);
 
-        Task<List<Location>> GetAllLocationsAsync();
+                Task<List<LocationInteriorImageAltText>> GetAllLanguageImageAltTextsAsync(int imageId);
 
-        Task<IDictionary<int, string>> GetAllLocationsIdNameAsync();
+                Task<IEnumerable<LocationProductMap>> GetAllLocationProductMapsAsync(int productId);
 
-        Task<IDictionary<int, string>> GetAllNamesIncludingDeletedAsync();
+                Task<List<Location>> GetAllLocationsAsync();
 
-        Task<(double? Latitude, double? Longitude)> GetCoordinatesAsync(string address);
+                Task<IDictionary<int, string>> GetAllLocationsIdNameAsync();
 
-        Task<List<LocationDayGrouping>> GetFormattedWeeklyHoursAsync(int locationId);
+                Task<IDictionary<int, string>> GetAllNamesIncludingDeletedAsync();
 
-        Task<LocationInteriorImage> GetInteriorImageByIdAsync(int imageId);
+                Task<(double? Latitude, double? Longitude)> GetCoordinatesAsync(string address);
 
-        Task<List<LocationInteriorImage>> GetLocationInteriorImagesAsync(int locationId);
+                Task<List<LocationDayGrouping>> GetFormattedWeeklyHoursAsync(int locationId);
 
-        Task<ImageAltText> GetImageAltTextAsync(int imageId, int languageId);
+                Task<LocationInteriorImageAltText> GetImageAltTextAsync(int imageId, int languageId);
 
-        Task<List<ImageAltText>> GetAllLanguageImageAltTextsAsync(int imageId);
+                Task<LocationInteriorImage> GetInteriorImageByIdAsync(int imageId);
 
-        Task<Location> GetLocationByCodeAsync(string locationCode);
+                Task<Location> GetLocationByCodeAsync(string locationCode);
 
-        Task<Location> GetLocationByIdAsync(int locationId);
+                Task<Location> GetLocationByIdAsync(int locationId);
 
-        Task<Location> GetLocationByStubAsync(string locationStub);
+                Task<Location> GetLocationByStubAsync(string locationStub);
 
-        Task<string> GetLocationLinkAsync(string placeId);
+                Task<List<LocationInteriorImage>> GetLocationInteriorImagesAsync(int locationId);
 
-        Task<IDictionary<string, int>> GetLocationProductMapAsync(int productId);
+                Task<string> GetLocationLinkAsync(string placeId);
 
-        Task<ICollection<Location>> GetLocationsBySegment(int segmentId);
+                Task<IDictionary<string, int>> GetLocationProductMapAsync(int productId);
 
-        Task<ICollection<LocationSummary>> GetLocationSummariesAsync(string address);
+                Task<ICollection<Location>> GetLocationsBySegment(int segmentId);
 
-        Task<DataWithCount<ICollection<Location>>> GetPaginatedListAsync(LocationFilter filter);
+                Task<ICollection<LocationSummary>> GetLocationSummariesAsync(string address);
 
-        Task UndeleteAsync(int id);
+                Task<DataWithCount<ICollection<Location>>> GetPaginatedListAsync(LocationFilter filter);
 
-        Task UpdateExteriorImage(IFormFile imageFile, string locationStub);
+                Task<string> SaveImageToServerAsync(byte[] imageBytes, string fileName, string subDirectory);
 
-        Task UpdateInteriorImageAsync(LocationInteriorImage newInteriorImage, IFormFile imageFile);
+                Task<string> SaveImageToServerAsync(byte[] imageBytes, string fileName);
 
-        Task UpdateLocationMappingAsync(int locationMapId, string importLocation, int locationId);
+                Task UndeleteAsync(int id);
 
-        Task<string> SaveImageToServerAsync(byte[] imageBytes, string fileName, string subDirectory = "");
+                Task UpdateExteriorImage(IFormFile imageFile, string locationStub);
 
-        Task UpdateLocationMapPathAsync(string locationCode, string mapImagePath);
+                Task UpdateInteriorImageAsync(LocationInteriorImage newInteriorImage, IFormFile imageFile);
 
-        Task<string> AssetPathToFullPath(string imagePath);
-    }
+                Task UpdateLocationMapPathAsync(string locationCode, string mapImagePath);
+
+                Task UpdateLocationMappingAsync(int locationMapId, string importLocation, int locationId);
+        }
 }
